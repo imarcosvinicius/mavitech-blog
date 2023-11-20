@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mavitech</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <!-- Conteúdo do navbar -->
+        <span class="navbar-brand mb-0 h1" style="font-weight: bold;">Mavitech</span>
+    </nav>
+</header>
+<section>
+
+    <div class="container" style="width: 60%; padding-bottom: 30px;">
+
+        <nav aria-label="breadcrumb" style="margin-top:20px;">
+            <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                <li class="breadcrumb-item active" aria-current="page">posts</li>
+            </ol>
+        </nav>
+
+        <div class="card text-white bg-dark mb-3" style="margin-top:20px;" th:each="post : ${posts}">
+            <div class="card-body">
+
+                <p class="card-subtitle mb2 text-muted" style="font-size: 0.8rem;">
+                    <span th:text="${post.author}"></span>
+                    <span th:text="${post.date}"></span>
+                </p>
+
+                <a href="#"><h4 class="card-title" style="font-weith: bold; color: white; padding-top: 5px">
+                    <span th:text="${post.title}"></span>
+                </h4></a>
+
+                <p class="card-text" th:utext="${#strings.abbreviate(post.text,400)}"></p>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>
